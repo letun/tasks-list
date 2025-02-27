@@ -32,6 +32,10 @@ export default function Tasks() {
         }
     }
 
+    function handleDeleteTask(id) {
+        setTasks( (tasks) => tasks.filter((v) => v.id !== id) );
+    }
+
   return (
     <div>
       <h1>Task List</h1>
@@ -40,7 +44,7 @@ export default function Tasks() {
         Add Task
       </button>
       <ul>
-        {tasks.map((v) => <TaskItem task={v} key={v.id} toggleTask={() => {}} deleteTask={() => {}} />)}
+        {tasks.map((v) => <TaskItem task={v} key={v.id} toggleTask={() => {}} deleteTask={handleDeleteTask} />)}
       </ul>
     </div>
   );

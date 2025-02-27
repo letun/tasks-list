@@ -10,7 +10,7 @@ export default function TaskItem({ task, toggleTask, deleteTask }) {
         }}
       >
         {task.text}
-        <button onClick={deleteTask(task.id)} style={{ marginLeft: 10 }}>
+        <button onClick={() => deleteTask(task.id)} style={{ marginLeft: 10 }}>
           Delete
         </button>
       </li>
