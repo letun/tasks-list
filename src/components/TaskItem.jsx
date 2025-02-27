@@ -1,15 +1,14 @@
 export default function TaskItem({ task, toggleTask, deleteTask }) {
     return (
-      <li
-        onClick={() => toggleTask(task.id)}
+      <li style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+        <span onClick={() => toggleTask(task.id)}
         style={{
           textDecoration: task.completed ? "line-through" : "none",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {task.text}
+        }}>{task.text}</span>
         <button onClick={() => deleteTask(task.id)} style={{ marginLeft: 10 }}>
           Delete
         </button>

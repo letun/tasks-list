@@ -36,6 +36,12 @@ export default function Tasks() {
         setTasks( (tasks) => tasks.filter((v) => v.id !== id) );
     }
 
+    function handleToggleTask(id) {
+        setTasks( (tasks) => tasks.map((v) => (v.id === id) ?
+         {...v, completed: !v.completed }
+         : v) );
+    }
+
   return (
     <div>
       <h1>Task List</h1>
@@ -44,7 +50,7 @@ export default function Tasks() {
         Add Task
       </button>
       <ul>
-        {tasks.map((v) => <TaskItem task={v} key={v.id} toggleTask={() => {}} deleteTask={handleDeleteTask} />)}
+        {tasks.map((v) => <TaskItem task={v} key={v.id} toggleTask={handleToggleTask} deleteTask={handleDeleteTask} />)}
       </ul>
     </div>
   );
