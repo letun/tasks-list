@@ -9,6 +9,7 @@ const getTasks = () =>
   }));
 
 export default function Tasks() {
+    const tasks = getTasks();
 
   return (
     <div>
@@ -19,7 +20,7 @@ export default function Tasks() {
         Add Task
       </button>
       <ul>
-        {/* <TaskItem task={v} key={v.id} toggleTask={() => {}} deleteTask={() => {}} /> */}
+        {tasks.map((v) => <TaskItem task={v} key={v.id} toggleTask={() => {}} deleteTask={() => {}} />)}
       </ul>
     </div>
   );
