@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import TaskItem from "./TaskItem";
 
@@ -17,17 +17,17 @@ function getMaxTaskId(tasks = []) {
 export default function Tasks() {
     const [title, setTitle] = useState('');
     const [tasks, setTasks] = useState(getTasks());
-    const [lastTaskId, setlastTaskId] = useState(getMaxTaskId(tasks));
+    const lastTaskId = useRef(getMaxTaskId(tasks));
 
     function handleAddTask() {
         if (title) {
-            setlastTaskId((id) => ++id);
             setTasks( (tasks) => [...tasks, {
-                    id: lastTaskId,
+                    id: lastTaskId.current,
                     text: title,
                     completed: false,
                 }]
             );
+            lastTaskId.current++;
             setTitle('');
         }
     }
